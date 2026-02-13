@@ -12,3 +12,20 @@
   }
 
 }
+
+@media screen and (min-width: 1400px) {
+  #mainText1 {
+    border: 2px solid black;
+    font-variation-settings: "opsz" 144, "wght" 1000, "GRAD" 150, "wdth" 151, "slnt" 0, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
+  }
+}
+
+@media screen and (min-height: 800px) {
+
+  #mainText2 {
+    border-top: 2px solid black;
+    font-variation-settings: "opsz" 144, "wght" 1000, "GRAD" 150, "wdth" 151, "slnt" 0, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
+
+  }
+    
+}

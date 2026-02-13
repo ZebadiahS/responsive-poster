@@ -39,7 +39,6 @@ body {
   position: fixed;
   top: 20%;
   left: 5%;
-  border-top: 2px solid black;
   rotate: 0deg;
   font-family: 'variableFont';
   font-size: 120px;
@@ -48,8 +47,8 @@ body {
   letter-spacing: 0;
   line-height: 140px;
   text-wrap: nowrap;
-  font-variation-settings: "opsz" 144, "wght" 1000, "GRAD" 150, "wdth" 151, "slnt" 0, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
-  transition: rotate 1s ease-in-out, font-size 1s ease-in-out, font-variation-settings 1s ease-in-out;
+  font-variation-settings: "opsz" 144, "wght" 600, "GRAD" 150, "wdth" 151, "slnt" 0, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
+  transition: rotate 1s ease-in-out, font-size 1s ease-in-out, font-variation-settings 1s ease-in-out, border 1s ease-in-out;
 }
 
 
@@ -65,8 +64,8 @@ body {
   letter-spacing: 0;
   line-height: 115px;
   text-wrap: nowrap;
-	font-variation-settings: "opsz" 144, "wght" 1000, "GRAD" 150, "wdth" 151, "slnt" 0, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
-  transition: font-size 0.5s ease-in-out, font-variation-settings 0.5s ease-in-out, left 0.5s ease-in-out;
+	font-variation-settings: "opsz" 144, "wght" 600, "GRAD" 150, "wdth" 151, "slnt" 0, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
+  transition: font-size 0.5s ease-in-out, font-variation-settings 0.5s ease-in-out, left 0.5s ease-in-out, border 0.5s ease-in-out;
 }
 
 
