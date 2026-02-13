@@ -1,0 +1,78 @@
+/* font: import ================================================ */
+@font-face {
+  font-family: 'variableFont';
+  src: url('./font/RobotoFlex.ttf') format('truetype');
+}
+
+
+/* Layout ================================================ */
+html,body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+html, body, *, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  transition: background-color 1s ease-in-out;
+  background-color: rgb(250,0,0);
+  /* background-image: url('./img/tiri_oracle1.jpg'); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+/* text ================================================ */
+#mainText1 {
+  position: fixed;
+  top: 20%;
+  left: 5%;
+  border-top: 2px solid black;
+  rotate: 0deg;
+  font-family: 'variableFont';
+  font-size: 120px;
+  color: black;
+  text-align: left;
+  letter-spacing: 0;
+  line-height: 140px;
+  text-wrap: nowrap;
+  font-variation-settings: "opsz" 144, "wght" 1000, "GRAD" 150, "wdth" 151, "slnt" 0, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
+  transition: rotate 1s ease-in-out, font-size 1s ease-in-out, font-variation-settings 1s ease-in-out;
+}
+
+
+#mainText2 {
+  position: fixed;
+  bottom: 5%;
+  left: 5%;
+  border-top: 2px solid black;
+  font-family: 'variableFont';
+  font-size: 100px;
+  color: black;
+  text-align: left;
+  letter-spacing: 0;
+  line-height: 115px;
+  text-wrap: nowrap;
+	font-variation-settings: "opsz" 144, "wght" 1000, "GRAD" 150, "wdth" 151, "slnt" 0, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
+  transition: font-size 0.5s ease-in-out, font-variation-settings 0.5s ease-in-out, left 0.5s ease-in-out;
+}
+
+
+/* Image ================================================ */
+#canvas1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
