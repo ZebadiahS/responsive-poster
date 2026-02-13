@@ -48,7 +48,7 @@ class Particle {
     this.x += this.vx;
     this.y += this.vy;
     if (this.x > this.effect.width - this.radius || this.x < this.radius) {
-      this.vx *= -0.8;
+      this.vx *= -1;
     }
     if (this.y > this.effect.height + this.radius + this.effect.maxDistance) {
       this.reset();
@@ -120,6 +120,7 @@ class Particle {
   reset() {
     this.x = this.radius + Math.random() * (this.effect.width - this.radius * 2);
     this.y = -this.radius - this.effect.maxDistance - Math.random() * this.effect.height * 0.2;
+    this.vx = Math.random() * 8 - 4;
     this.vy = 0;
   }
 
