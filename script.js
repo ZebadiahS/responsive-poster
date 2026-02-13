@@ -25,10 +25,10 @@ function responsivePoster() {
   const match800 = window.matchMedia("(min-height: 800px)").matches;
   const match600 = window.matchMedia("(min-height: 600px)").matches;
   const match400 = window.matchMedia("(min-height: 400px)").matches;
-  const match1000 = window.matchMedia("(min-width:1000px)").matches;
-  const match1200 = window.matchMedia("(min-width:1200px)").matches;
-  const match1400 = window.matchMedia("(min-width:1400px)").matches;
-  const match1600 = window.matchMedia("(min-width:1600px)").matches;
+  const match1000 = window.matchMedia("(min-width:800px)").matches;
+  const match1200 = window.matchMedia("(min-width:1000px)").matches;
+  const match1400 = window.matchMedia("(min-width:1200px)").matches;
+  const match1600 = window.matchMedia("(min-width:1400px)").matches;
 
   // Min-height conditions
   if (match800) {

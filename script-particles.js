@@ -22,7 +22,7 @@ class Particle {
     this.radius = Math.random() * 13 + 3;
     this.x = this.radius + Math.random() * (this.effect.width - this.radius * 2);
     this.y = -this.radius - Math.random() * this.effect.height * 0.5;
-    this.vx = Math.random() * 8 - 4;
+    this.vx = Math.random() * 6 - 2;
     this.vy = 0;
     this.gravity = this.radius * 0.001;
     this.width = this.radius * 2;
