@@ -26,7 +26,7 @@ body {
   justify-content: center;
   align-items: center; */
   transition: background-color 1s ease-in-out;
-  background-color: rgb(250,0,0);
+  background-color: rgb(0,70,5);
   /* background-image: url('./img/tiri_oracle1.jpg'); */
   background-repeat: no-repeat;
   background-position: center;
@@ -42,7 +42,7 @@ body {
   rotate: 0deg;
   font-family: 'variableFont';
   font-size: 120px;
-  color: black;
+  color: rgb(255, 255, 255);
   text-align: left;
   letter-spacing: 0;
   line-height: 140px;
@@ -56,10 +56,9 @@ body {
   position: fixed;
   bottom: 5%;
   left: 5%;
-  border-top: 2px solid black;
   font-family: 'variableFont';
   font-size: 100px;
-  color: black;
+  color: rgb(255, 255, 255);
   text-align: left;
   letter-spacing: 0;
   line-height: 115px;
