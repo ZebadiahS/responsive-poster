@@ -11,8 +11,7 @@ gradient.addColorStop(0.85, 'green');
 
 ctx.fillStyle = gradient;
 ctx.strokeStyle = gradient;
-ctx.lineWidth = 2;
-console.log(ctx);
+ctx.lineWidth = 1;
 
 
 
@@ -24,23 +23,16 @@ class Particle {
     this.y = -this.radius - Math.random() * this.effect.height * 0.5;
     this.vx = Math.random() * 6 - 2;
     this.vy = 0;
-    this.gravity = this.radius * 0.001;
+    this.gravity = this.radius * 0.003;
     this.width = this.radius * 2;
     this.height = this.radius * 2;
-    this.color = "white";
   }
 
   draw(context) {
     context.beginPath();
-    context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    const radiusFactor = this.effect.mode ? 0.5 : 1;
+    context.arc(this.x, this.y, this.radius * radiusFactor, 0, Math.PI * 2);
     context.fill();
-    if (this.effect.debug) {
-      context.save();
-      context.fillStyle = this.color;
-      context.fillRect(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
-      context.strokeRect(this.x - this.radius, this.y - this.radius , this.radius * 2, this.radius * 2);
-      context.restore();
-    }
   }
 
   update() {
@@ -50,8 +42,19 @@ class Particle {
     if (this.x > this.effect.width - this.radius || this.x < this.radius) {
       this.vx *= -1;
     }
-    if (this.y > this.effect.height + this.radius + this.effect.maxDistance) {
-      this.reset();
+    if (!this.effect.mode) {
+      if (this.y > this.effect.height + this.radius + this.effect.maxDistance) {
+        this.reset();
+      }
+    } else {
+      // When mode is active particles move upward; if they pass the top,
+      // respawn them just below the viewport (mirror of normal behavior).
+      if (this.y < -this.radius - this.effect.maxDistance) {
+        this.x = this.radius + Math.random() * (this.effect.width - this.radius * 2);
+        this.y = this.effect.height + this.radius + this.effect.maxDistance + Math.random() * this.effect.height * 0.2;
+        this.vx = Math.random() * 8 - 4;
+        this.vy = 0;
+      }
     }
 
     //collision detection
@@ -75,7 +78,6 @@ class Particle {
     if (collisionWithElement2) element = this.effect.element2;
 
     if (element) {
-      this.color = "red";
 
       // Rectangle center
       const rectCenterX = element.x + element.width / 2;
@@ -136,15 +138,16 @@ class Effect {
     this.numberOfParticles = 300;
     this.createParticles();
 
-    this.debug = true;
     this.element = document.getElementById('mainText1').getBoundingClientRect();
     this.element2 = document.getElementById('mainText2').getBoundingClientRect();
 
-    this.maxDistance = 150;
+    this.maxDistance = 100;
+
+    this.mode = false;
 
     window.addEventListener('keydown', e => {
       if (e.key === 'd') {
-        this.debug = !this.debug;
+        this.toggleMode();
       }
     });
 
@@ -165,11 +168,6 @@ class Effect {
       particle.draw(context);
       particle.update();
     });
-
-    if (this.debug) {
-      context.strokeRect(this.element.x, this.element.y, this.element.width, this.element.height);
-      context.strokeRect(this.element2.x, this.element2.y, this.element2.width, this.element2.height);
-    }
   }
 
   connectParticles(context) {
@@ -212,6 +210,26 @@ class Effect {
 
     this.particles.forEach(particle => {
       particle.reset();
+    });
+  }
+
+  toggleMode() {
+    this.mode = !this.mode;
+    if (this.mode) {
+      this.context.fillStyle = 'blue';
+      this.context.strokeStyle = 'white';
+      this.context.lineWidth = 0;
+    } else {
+      const g = this.context.createLinearGradient(0, 0, this.width, this.height);
+      g.addColorStop(0.15, 'yellow');
+      g.addColorStop(0.5, 'blue');
+      g.addColorStop(0.85, 'green');
+      this.context.fillStyle = g;
+      this.context.strokeStyle = g;
+      this.context.lineWidth = 2;
+    }
+    this.particles.forEach(p => {
+      p.gravity *= -1;
     });
   }
 
