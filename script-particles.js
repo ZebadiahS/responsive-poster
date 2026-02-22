@@ -412,14 +412,52 @@ class Effect {
   }
 }
 
-// Instantiate the Effect and start the render loop
-const effect = new Effect(canvas, ctx);
+// Particle system control: start/stop based on window height (>820px)
+let effect = null;
+let animationId = null;
 
-// Main animation loop: clear canvas, draw/update particles, schedule next frame
 function animate() {
+  if (!effect) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   effect.handleParticles(ctx);
-  requestAnimationFrame(animate);
+  animationId = requestAnimationFrame(animate);
 }
 
-animate();
+function startParticles() {
+  if (animationId) return; // already running
+  // ensure canvas matches viewport
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  // recreate gradient to match size
+  const g = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  g.addColorStop(0.15, 'yellow');
+  g.addColorStop(0.5, 'green');
+  g.addColorStop(0.85, 'rgb(0,200,200)');
+  ctx.fillStyle = g;
+  ctx.strokeStyle = g;
+
+  effect = new Effect(canvas, ctx);
+  animate();
+}
+
+function stopParticles() {
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+  effect = null;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function checkParticlesActivation() {
+  if (window.innerHeight > 820) {
+    startParticles();
+  } else {
+    stopParticles();
+  }
+}
+
+// Initial check and listen for crossings
+checkParticlesActivation();
+window.addEventListener('resize', checkParticlesActivation);
